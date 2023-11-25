@@ -1,0 +1,373 @@
+<html>
+
+<head>
+  <title>ClassicHook</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Raleway", sans-serif
+    }
+
+    .w3-bar .w3-button {
+      padding: 16px;
+    }
+
+    .w3-display-left {
+      color: white;
+    }
+
+  
+
+    .w3-bar .w3-button {
+      padding: 2px;
+      margin-top: 10px;
+      margin: 11px
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px;
+      display: flex;
+    }
+
+    /* Columns */
+    .left {
+      width: 65%;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+
+    }
+
+    .right {
+      width: 35%;
+      margin-top: 80px;
+    }
+
+
+    /* Left Column */
+    .left img {
+      width: 80%;
+      position: absolute;
+      left: 0;
+      margin: 50px;
+      top: 0;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .left img.active {
+      opacity: 1;
+    }
+
+    .info {
+      position: relative;
+      border-bottom: 1px solid #E1E8EE;
+      margin-bottom: 20px;
+    }
+
+    .info span {
+      position: relative;
+      font-size: 12px;
+      color: #358ED7;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .info h1 {
+      position: relative;
+      font-weight: 300;
+      font-size: 52px;
+      color: #43484D;
+      letter-spacing: -2px;
+    }
+
+    .info p {
+      position: relative;
+      font-size: 16px;
+      font-weight: 300;
+      color: #86939E;
+      line-height: 24px;
+    }
+	
+    .option span{
+      font-size: 14px;
+      font-weight: 400;
+      color: #86939E;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .option {
+      margin-bottom: 30px;
+    }
+
+    .colors div {
+      display: inline-block;
+    }
+
+    .colors input[type="radio"] {
+      display: none;
+    }
+
+    .colors input[type="radio"]+label span {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      margin: -1px 4px 0 0;
+      vertical-align: middle;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .colors input[type="radio"]+label span {
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+    }
+
+    .colors input[type="radio"]#beige+label span {
+      background-color: #F5F5DC;
+    }
+
+    .colors input[type="radio"]#orange+label span {
+      background-color: FF8C00;
+    }
+
+    .colors input[type="radio"]#black+label span {
+      background-color: #000000;
+    }
+
+    .price {
+      display: flex;
+      align-items: center;
+    }
+
+    .price span {
+      font-size: 26px;
+      font-weight: 300;
+      color: #43474D;
+      margin-right: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      border-radius: 10px;
+      background-color: #20B2AA;
+      border: none;
+      color: #F0F8FF;
+      text-align: center;
+      padding: 10px;
+      width: 190px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    #butt {
+      color: #F0F8FF;
+      font-size: 20px;
+    }
+
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    .button:hover span {
+      padding-right: 20px;
+    }
+
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+
+    @media (max-width: 940px) {
+      .container {
+        flex-direction: column;
+        margin-top: 60px;
+      }
+
+      .left,
+      .right {
+        width: 100%;
+      }
+
+      .left img {
+        width: 270px;
+        right: 10;
+        top: -100px;
+        left: initial;
+      }
+    }
+
+    @media (max-width: 535px) {
+      .left img {
+        width: 220px;
+        top: -85px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar (sit on top) -->
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+      <a href="#home" class="w3-bar-item w3-button w3-wide">
+        <img src="https://i.postimg.cc/65bD7MWk/Omni-Shield-Logo-t.png" width="35px">
+      </a>
+
+      <!-- Right-sided navbar links -->
+      <div class="w3-right w3-hide-small">
+        <a href="OmniShield.html#home" class="w3-bar-item w3-button">HOME</a>
+        <a href="OmniShield.html#about" class="w3-bar-item w3-button">ABOUT</a>
+        <a href="OmniShield.html#products" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> PRODUCTS</a>
+        <a href="OmniShield.html#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+      </div>
+
+      <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+        onclick="w3_open()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Sidebar on small screens when clicking the menu icon -->
+  <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
+    style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="OmniShield.html#home" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+    <a href="OmniShield.html#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+    <a href="OmniShield.html#products" onclick="w3_close()" class="w3-bar-item w3-button">PRODUCTS</a>
+    <a href="OmniShield.html#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+  </nav>
+
+  <br><br>
+  <main class="container">
+
+    <!-- Left Column / Headphones Image -->
+    <div class="left">
+      <img data-image="beige" src="https://i.postimg.cc/pLv7MQ5q/U9.png" alt="">
+      <img data-image="orange" src="https://i.postimg.cc/xCXp3tBT/U10.png" alt="">
+      <img data-image="black" class="active" src="https://i.postimg.cc/50rq9J7f/U11.png" alt="">
+    </div>
+    <br>
+
+    <!-- Right Column -->
+    <div class="right">
+
+      <!-- Product Description -->
+      <div class="info">
+        <span>Hook Hand</span>
+        <h1>Classsic Hook </h1>
+        <p>Featuring 16 sturdy fiberglass ribs, a durable and robust steel shaft, and a beautiful wooden crook handle,
+          all wrapped in a 190T pongee fabric. <br><br>
+          This umbrella is equipped with an automatic opening mechanism, facilitating a prompt response to sudden
+          downpours. Operable with a single hand, it boasts efficiency, reliability, and convenience—all without the
+          need for batteries. The distinguished wooden J-handle design imparts a classic aesthetic, ensuring a secure
+          grip and ease of portability
+        <p>
+      </div>
+
+      <!-- Product Configuration -->
+      <div class="product-configuration">
+
+        <!-- Product Color -->
+        <div class="option">
+          <span>Color</span>
+
+          <div class="colors">
+            <div>
+              <input data-image="beige" type="radio" id="beige" name="color" value="beige" checked>
+              <label for="beige"><span></span></label>
+            </div>
+            <div>
+              <input data-image="orange" type="radio" id="orange" name="color" value="orange">
+              <label for="orange"><span></span></label>
+            </div>
+            <div>
+              <input data-image="black" type="radio" id="black" name="color" value="black">
+              <label for="black"><span></span></label>
+            </div>
+          </div>
+
+        </div>
+
+        <br>
+        <!-- Product Pricing -->
+        <div class="price">
+          <span>₱699.00</span>
+          <a href="#" class="button" style="vertical-align:middle"><span id="butt">Add to cart</span></a>
+        </div>
+      </div>
+  </main>
+
+  <script>
+    // Toggle between showing and hiding the sidebar when clicking the menu icon
+    var mySidebar = document.getElementById("mySidebar");
+
+    function w3_open() {
+      if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+      } else {
+        mySidebar.style.display = 'block';
+      }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+      mySidebar.style.display = "none";
+    }
+
+    $(document).ready(function () {
+
+      $('.colors input').on('click', function () {
+        var headphonesColor = $(this).attr('data-image');
+
+        $('.active').removeClass('active');
+        $('.left img[data-image = ' + headphonesColor + ']').addClass('active');
+        $(this).addClass('active');
+      });
+
+    });
+
+  </script>
+
+</body>
+
+</html>
